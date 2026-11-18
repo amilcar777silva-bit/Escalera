@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08140f">
+<title>ESCALERA 1.5x - 30 DÍAS</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header><h1>ESCALERA <span id="tOdds">1.5x</span> – <span id="tDays">30</span> DÍAS</h1>
+<nav><a href="#principal">Hoy</a><a href="#caminos">Caminos</a><a href="#tabla">Tabla</a><a href="#graficas">Gráficas</a><a href="#historial">Historial</a><a href="#datos">Datos</a></nav></header>
+<div class="aviso" role="note"><b>Aviso:</b> los resultados mostrados son proyecciones matemáticas, no garantías de ganancia. Una cuota de 1.50 no asegura que una apuesta sea ganadora: una sola pérdida detiene el camino y se pierde el capital apostado. Apuesta solo lo que puedas perder.</div>
+<main>
+<section id="principal" class="card hero">
+<h2>¿Cuánto debería haber ganado hoy?</h2>
+<div class="sel"><button data-a="step" data-v="-1" aria-label="Día anterior">‹</button>
+<label>Día <input id="dayIn" type="number" inputmode="numeric" min="1"></label>
+<button data-a="step" data-v="1" aria-label="Día siguiente">›</button></div>
+<input id="dayRange" type="range" min="1" value="1" aria-label="Seleccionar día">
+<div id="hero"></div></section>
+
+<section id="caminos"><h2>Los cinco caminos</h2>
+<div class="bar"><label>Fecha de la apuesta <input id="fecha" type="date"></label><button data-a="resetAll" class="ghost">Reiniciar todos</button></div>
+<div id="cards" class="cards"></div></section>
+
+<section id="tabla" class="card"><h2>Tabla de los días</h2>
+<div id="tabs" class="tabs"></div><div class="scroll"><table id="tbl"></table></div></section>
+
+<section id="graficas"><h2>Gráficas</h2>
+<div class="card"><h3>Evolución teórica</h3><canvas id="c1"></canvas></div>
+<div class="card"><h3>Evolución real</h3><canvas id="c2"></canvas></div>
+<div class="card"><h3>Diferencia: real − objetivo</h3><canvas id="c3"></canvas></div>
+<div id="legend" class="legend"></div></section>
+
+<section id="historial" class="card"><h2>Historial de resultados</h2><div class="scroll"><table id="hist"></table></div></section>
+
+<section id="datos" class="card"><h2>Configuración y datos</h2>
+<div class="cfg"><label>Capital inicial (R$)<input id="cCap" type="number" step="0.01" min="0.01"></label>
+<label>Cuota decimal<input id="cOdds" type="number" step="0.01" min="1.01"></label>
+<label>Duración (días)<input id="cDays" type="number" min="1" max="365"></label>
+<button data-a="cfg">Guardar configuración</button></div>
+<p class="nota">El capital se aplica solo a los caminos sin resultados registrados. Los demás se cambian al reiniciarlos.</p>
+<div class="bar"><button data-a="csv">Exportar CSV</button><button data-a="json">Copia de seguridad JSON</button>
+<button data-a="restore">Restaurar copia</button><input id="file" type="file" accept=".json,application/json" hidden></div>
+<p id="net" class="nota"></p></section>
+</main>
+<script src="app.js"></script></body></html>
